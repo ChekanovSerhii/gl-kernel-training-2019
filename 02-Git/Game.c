@@ -24,7 +24,7 @@ int main()
 
     int user_wins = 0;
     int comp_wins = 0;
-    
+
 	int cc = rand() % 3;
 	
     while ((user_wins < 10) && (comp_wins < 10))
@@ -48,7 +48,24 @@ int main()
 
         int cc = rand() % 3;
 
+        int answer = (cu - cc + 3) % 3;
+
+        if (answer == 1) {
+            comp_wins++;
+            cout << rewrite(cu) << " против " << rewrite(cc) << ", Компьютер победил! (" << user_wins << ":" << comp_wins << ")" << endl;
+        }
+        else if (answer == 0) {
+            cout << rewrite(cu) << " против " << rewrite(cc) << ", Ничья! (" << user_wins << ":" << comp_wins << ")" << endl;
+        }
+        else if (answer == 2) {
+            user_wins++;
+            cout << rewrite(cu) << " против " << rewrite(cc) << ", Вы победили! (" << user_wins << ":" << comp_wins << ")" << endl;
+        }
     }
+
+    if (comp_wins > user_wins) cout << endl << "Компьютер победил!";
+    else if (comp_wins < user_wins) cout << endl << "Поздравляем! Вы победили";
+    else cout << endl << "Ничья!";
 
     cout << endl << "Нажмите любую клавишу...";
     _getch();
